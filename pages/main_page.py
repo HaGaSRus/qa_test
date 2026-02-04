@@ -18,4 +18,12 @@ class MainPage:
         address_input.fill(full_address)
         self.page.get_by_role("button", name="Найти").click()
 
-    
+    def open_request_form(self) -> None:
+        self.page.get_by_role("button", name="Оставить заявку").first.click()
+
+    def fill_request_form(self, name: str, phone: str) -> None:
+        self.page.get_by_placeholder("Ваше имя").fill(name)
+        self.page.get_by_placeholder("Телефон").fill(phone)
+
+    def submit_request(self) -> None:
+        self.page.get_by_role("button", name="Отправить заявку").click()
