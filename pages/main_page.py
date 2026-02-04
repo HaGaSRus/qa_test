@@ -13,11 +13,7 @@ class MainPage:
         self.page.goto(BASE_URL)
 
     def search_address(self, street: str, house: str) -> None:
-        """Ввод адреса в поисковую строку.
 
-        Точные локаторы могут отличаться, поэтому используется
-        максимально устойчивый подход через placeholder и роль.
-        """
         full_address = f"{street}, {house}"
         address_input = self.page.get_by_placeholder("Улица и дом").first
         address_input.fill(full_address)
