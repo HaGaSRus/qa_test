@@ -27,3 +27,15 @@ class MainPage:
 
     def submit_request(self) -> None:
         self.page.get_by_role("button", name="Отправить заявку").click()
+
+    def should_see_success_message(self) -> None:
+        success = self.page.get_by_text("заявка принята", exact=False)
+        expect(success).to_be_visible()
+
+    def change_region(self, region_name: str) -> None:
+        self.page.get_by_role("button", name="Ваш регион").click()
+        self.page.get_by_role("button", name=region_name).click()
+
+    def current_region_should_be(self, region_name: str) -> None:
+        header_region = self.page.get_by_role("button", name=region_name)
+        expect(header_region).to_be_visible()
